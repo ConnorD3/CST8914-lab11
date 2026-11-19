@@ -15,8 +15,11 @@ accordionBtns.forEach((accordion) => {
   accordion.onclick = function () {
     this.classList.toggle("is-open");
 
-    let content = this.nextElementSibling;
+    let content = this.parentElement.nextElementSibling;
     console.log(content);
+
+    const isExpanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", !isExpanded);
 
     if (content.style.maxHeight) {
       //this is if the accordion is open
